@@ -3,8 +3,8 @@ import random
 # import username
 
 # Victory/Defeat Messages
-import player_win
-import comp_win
+from outcomes import player_win
+from outcomes import comp_win
 
 comp_wins = 0
 player_wins = 0
@@ -34,8 +34,9 @@ def computer_option():
         comp_pick = "S"
     return comp_pick
 
-# def user():
-#    u =
+
+def user():
+    return user()
 
 
 while True:
