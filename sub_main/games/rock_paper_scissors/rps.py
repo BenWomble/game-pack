@@ -1,10 +1,12 @@
-# Standard library import
+#  Standard library import
 import random
-# import username
 
-# Victory/Defeat Messages
-from outcomes import player_win
-from outcomes import comp_win
+#  Username Input
+#  from sub_main import username
+
+#  Victory/Defeat Messages
+from sub_main.outcomes import player_win
+from sub_main.outcomes import comp_win
 
 comp_wins = 0
 player_wins = 0
@@ -36,7 +38,8 @@ def computer_option():
 
 
 def user():
-    return user()
+
+    return user
 
 
 while True:
@@ -76,7 +79,7 @@ while True:
             player_wins += 1
 
     print("")
-    print("Player wins: " + str(player_wins))
+    print(str(user), "wins: " + str(player_wins))
     print("Computer wins: " + str(comp_wins))
     print("")
 
