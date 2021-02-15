@@ -44,11 +44,11 @@ def user():
 
 while True:
     print("")
-    quit_choice: str = choose_option()
+    user_choice: str = choose_option()
     comp_choice = computer_option()
     print("")
 
-    if quit_choice == "R":
+    if user_choice == "R":
         if comp_choice == "R":
             print("You chose rock. The computer chose rock. You tied.")
         elif comp_choice == "P":
@@ -58,7 +58,7 @@ while True:
             print("You chose rock. The computer chose scissors. You win!")
             player_wins += 1
 
-    elif quit_choice == "P":
+    elif user_choice == "P":
         if comp_choice == "P":
             print("You chose paper. The computer chose paper. You tied.")
         elif comp_choice == "S":
@@ -68,7 +68,7 @@ while True:
             print("You chose paper. The computer chose rock. You win!")
             player_wins += 1
 
-    elif quit_choice == "S":
+    elif user_choice == "S":
         if comp_choice == "S":
             print("You chose scissors. The computer chose scissors. You tied.")
         elif comp_choice == "R":
