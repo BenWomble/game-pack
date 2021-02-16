@@ -1,4 +1,4 @@
-# NOTICE
+# Notice
 
 This project is still a work-in-progress and may not function properly.
 If any issues are found, feel free to contact me and let me know what
