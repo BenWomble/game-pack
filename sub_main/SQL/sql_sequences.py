@@ -1,19 +1,15 @@
 from sub_main.users import user
 from sub_main.SQL import sql_database_connect
-from sub_main import menu
-#  from main import game_choice
+#  from sub_main import menu
+
+#  SQL Database CONNECT
 
 mydb = sql_database_connect.sql_connect_local()
-
 SQL_CONNECT = sql_database_connect.sql_connect_local()
 mycursor = SQL_CONNECT.cursor()
 
+
 #  SQL Database SELECT
-
-#  SQL_FORMULA_FIND = f"SELECT name FROM users WHERE name=''"
-#  mycursor.execute(SQL_FORMULA_FIND)
-#  myresult = mycursor.fetchall()
-
 
 def find_id():
     sql_formula_find_id = "SELECT ID FROM Users WHERE id=(SELECT max(id) FROM Users)"
@@ -26,11 +22,6 @@ def find_id():
 a_id = find_id()
 n_id = int(a_id) + int(1)
 n_id = str(n_id)
-
-#  for last_id in myresult:
-#      a_id: int = last_id
-#  n_id = int(a_id) + int(1)
-#  n_id = str(n_id)
 
 
 def create_insert():
@@ -50,10 +41,11 @@ def create_insert():
                  str(l_name))
     mycursor.execute(sql_formula_insert, user_data)
     SQL_CONNECT.commit()
+    return user.get_username()
 
 
 def find_user():
-    sql_formula_find_username = f"SELECT Username FROM Users WHERE Username=" + "'" + str(user.get_username() + "'")
+    sql_formula_find_username = f"SELECT Username FROM Users WHERE Username=" + "'" + str(user.user_name) + "'"
     mycursor.execute(sql_formula_find_username)
     myresult = mycursor.fetchone()
     for user_id in myresult:
@@ -61,7 +53,7 @@ def find_user():
 
 
 def pull_pass():
-    sql_formula_find_password = f"SELECT Password FROM Users WHERE Username=" + "'" + str(user.get_username() + "'")
+    sql_formula_find_password = f"SELECT Password FROM Users WHERE Username=" + "'" + str(user.user_name) + "'"
     mycursor.execute(sql_formula_find_password)
     myresult = mycursor.fetchone()
     for user_pass in myresult:
@@ -79,16 +71,17 @@ def check_pass():
 
 
 def get_user():
-    while True:
-        if find_user() == user.get_username():
+    run = True
+    while run:
+        if str(find_user()) == str(user.user_name):
 
             #  Password
 
             while True:
                 pass_input = check_pass()
                 if pass_input == pull_pass():
+                    from sub_main import menu
                     menu.menu_games()
-                    break
                 else:
                     print()
                     print('The password you entered was not correct. Try again.')
@@ -98,4 +91,3 @@ def get_user():
             print()
             print('That user does not exist.')
             get_user()
-            pass

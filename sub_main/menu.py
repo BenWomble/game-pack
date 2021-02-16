@@ -1,4 +1,8 @@
-from sub_main import games
+from sub_main.games.age_guesser import ag
+from sub_main.games.checkers import checkers
+
+from sub_main.games.space_invaders import si
+from sub_main.games.tic_tac_toe import ttt
 
 
 def menu_top():
@@ -12,32 +16,29 @@ def menu_top():
 
 
 def menu_games():
-    print('-'*32)
-    print(('-'*14) + 'Games' + ('-' * 13))
+    print('-' * 32)
+    print(('-' * 14) + 'Games' + ('-' * 13))
     print('1. Rock, Paper, Scissors')
     print('2. Tic Tac Toe')
     print('3. Checkers')
     print('4. Space Invaders')
     print('5. Age Guesser')
     print('Q. Exit this program')
-    print('-'*30)
+    print('-' * 30)
     choice = input(': ')
-    while True:
+    run = True
+    while run:
         if choice == '1':
-            games.rock_paper_scissors.rps.choose_option()
-            break
+            from sub_main.games.rock_paper_scissors import rps
+            rps
         if choice == '2':
-            games.tic_tac_toe.ttt.coming_soon()
-            break
+            ttt.coming_soon()
         if choice == '3':
-            games.checkers.checkers.coming_soon()
-            break
+            checkers.coming_soon()
         if choice == '4':
-            games.space_invaders.si.coming_soon()
-            break
+            si.coming_soon()
         if choice == '5':
-            games.age_guesser.ag.coming_soon()
-            break
+            ag.coming_soon()
         if choice in ['q', 'Q', 'quit', 'Quit']:
             choice = 'Q'
             print()
@@ -50,10 +51,11 @@ def menu_games():
                 print('-' * 32)
                 print('Goodbye. Have A Nice Day!')
                 print('-' * 32)
-                break
+                run = False
             elif quit_choice in ["n", "N"]:
                 print()
                 print('-' * 32)
                 print('Returning to Main Menu')
                 print('-' * 32)
                 menu_games()
+            pass

@@ -1,12 +1,3 @@
-import mysql.connector
-
-mydb = mysql.connector.connect(
-    host='192.168.10.76',
-    user='sql-admin',
-    passwd='COMMD0m@!n'
-)
-
-
 #  Create a new user
 
 def username():
@@ -62,3 +53,6 @@ def get_username():
     print()
     g_username = input(':  ')
     return g_username
+
+
+user_name = get_username()

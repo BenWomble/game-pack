@@ -1,5 +1,6 @@
 #  Standard library import
 import random
+from sub_main.users import user
 
 #  Username Input
 #  from sub_main import username
@@ -37,12 +38,8 @@ def computer_option():
     return comp_pick
 
 
-def user():
-
-    return user
-
-
-while True:
+run = True
+while run:
     print("")
     user_choice: str = choose_option()
     comp_choice = computer_option()
@@ -79,7 +76,7 @@ while True:
             player_wins += 1
 
     print("")
-    print(str(user), "wins: " + str(player_wins))
+    print(str(user.user_name), "wins: " + str(player_wins))
     print("Computer wins: " + str(comp_wins))
     print("")
 
@@ -91,10 +88,10 @@ while True:
             print(player_win.message())
         else:
             print(comp_win.message())
-        break
+        run = False
     else:
         if str(player_wins) > str(comp_wins):
             print(player_win.message())
         else:
             print(comp_win.message())
-    break
+    run = False
